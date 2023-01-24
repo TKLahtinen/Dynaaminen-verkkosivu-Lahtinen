@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+ </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const person = {
+            fname: 'Tipe',
+            lname: 'Lahtinen',
+            address: {
+                street: 'tipentie 1',
+                zip: '94800',
+                city: 'Oulu'
+            }
+        }
+
+        function Person(props) {
+            return(
+                <div>
+                    <h1>Hello!</h1>
+                    <h3>Your name and contact details are</h3>
+                    <p>{props.person.fname} {props.person.lname}</p>
+                    <Address address={props.person.address} />    
+                </div>
+            )
+        }
+
+        function Address(props){
+            return(
+                <p>
+                    {props.address.street} <br/>
+                    {props.address.zip} {props.address.city}    
+                </p>
+            )
+        }
+
+        
+
+      const container = document.getElementById('root');
+      const root = ReactDOM.createRoot(container);
+      root.render(<Person person={person}/>);
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+  </body>
+</html>
